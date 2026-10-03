@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0f172a;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 20px;
+}
+
+.todo {
+    width: 100%;
+    max-width: 600px;
+    background: #1e293b;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+h1 {
+    color: #38bdf8;
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+button {
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.addbtn {
+    background: #38bdf8;
+    color: #0f172a;
+    
+}
+
+#delbtn {
+    background: #ef4444;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+#taskList {
+    list-style: none;
+}
+
+#taskList li {
+    background: #334155;
+    color: #f8fafc;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#taskList li.selected {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+@media (max-width:600px) {
+    .container {
+        flex-direction: column;
+    }
+    #input,
+    button {
+       width: 100%;
+    }
+}
+
+
