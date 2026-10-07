@@ -217,6 +217,26 @@ button:active {
     border-color: #38bdf8;
 }
 
+.subtitle,
+.section-header h2,
+#remaining,
+.empty-state h3,
+.empty-state p,
+.task-count small {
+    color: #94a3b8;
+}
+
+.section-header h2 {
+    color: #f8fafc;
+}
+
+.empty-state h3 {
+    color: #f8fafc;
+}
+
+.eyebrow {
+    color:#38bdf8;
+}
 
 /* Mobile */
 
