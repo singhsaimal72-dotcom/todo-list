@@ -71,7 +71,7 @@ function renderTasks() {
 
     taskList.innerHTML = "";
 
-    if(tasks.lenth ===0) {
+    if(tasks.length ===0) {
         emptyState.style.display ="block";
     }
 
