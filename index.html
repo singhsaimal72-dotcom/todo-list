@@ -3,28 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="style.css">
-    
-    <title>Todo-List</title>
+
+    <title>Todo List</title>
 </head>
+
 <body>
-    <main>
-        <div class="todo">
-        <h1>Todo's list</h1>
-        <div class="container">
-            
-            <input type="text" id="input" placeholder="Write down what's next">
-            <button class="addbtn">Add</button>
-            <button id="delbtn">Delete</button>
-            <button id="editbtn">Edit</button>
-             </div>
-            <ul id="taskList"></ul>
-       
-        </div>
-        
-    
+
+    <main class="app">
+
+        <section class="todo">
+
+            <!-- Header -->
+            <header class="todo-header">
+                <div>
+                    <p class="eyebrow">PRODUCTIVITY</p>
+                    <h1>My Tasks</h1>
+                    <p class="subtitle">Stay organized. Get things done.</p>
+                </div>
+
+                <div class="task-count">
+                    <span id="taskCount">0</span>
+                    <small>Tasks</small>
+                </div>
+            </header>
+
+
+            <!-- Add Task -->
+            <div class="input-area">
+
+                <input
+                    type="text"
+                    id="input"
+                    placeholder="What needs to be done?"
+                    autocomplete="off"
+                >
+
+                <button class="addbtn" type="button">
+                    <span>+</span>
+                    Add Task
+                </button>
+
+            </div>
+
+
+            <!-- Actions -->
+            <div class="actions">
+
+                <button id="editbtn" type="button">
+                    Edit
+                </button>
+
+                <button id="delbtn" type="button">
+                    Delete
+                </button>
+
+            </div>
+
+
+            <!-- Tasks -->
+            <div class="tasks-section">
+
+                <div class="section-header">
+                    <h2>Today's Tasks</h2>
+                    <span id="remaining">0 remaining</span>
+                </div>
+
+                <ul id="taskList"></ul>
+
+                <!-- Empty state -->
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">✓</div>
+                    <h3>No tasks yet</h3>
+                    <p>Add your first task above.</p>
+                </div>
+
+            </div>
+
+        </section>
+
     </main>
-    
+
+    <script src="script.js"></script>
+
 </body>
-<script src="script.js"></script>
-</html>
+                    </html>
