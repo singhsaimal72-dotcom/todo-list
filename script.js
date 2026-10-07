@@ -1,5 +1,6 @@
 const input = document.getElementById("input");
 const taskList = document.getElementById("taskList");
+
 const addbtn = document.querySelector(".addbtn");
 const delbtn = document.getElementById("delbtn");
 const editbtn = document.getElementById("editbtn");
@@ -8,15 +9,22 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 let selectedTaskId = null;
 
-function saveTask() {
 
-    localStorage.setItem("tasks",
-        JSON.stringify(tasks)
-    );
+// ==============================
+// SAVE TASKS
+// ==============================
+
+function saveTask() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 
+// ==============================
+// ADD TASK
+// ==============================
+
 function addTask() {
+
     const taskText = input.value.trim();
 
     if (taskText === "") {
@@ -30,23 +38,36 @@ function addTask() {
     };
 
     tasks.push(task);
+
     saveTask();
+
     input.value = "";
+
     renderTasks();
 }
 
 addbtn.addEventListener("click", addTask);
 
+
+// Enter key
 input.addEventListener("keydown", (event) => {
+
     if (event.key === "Enter") {
+
         event.preventDefault();
+
         addTask();
     }
+
 });
 
 
+// ==============================
+// RENDER TASKS
+// ==============================
 
 function renderTasks() {
+
     taskList.innerHTML = "";
 
     tasks.forEach((task) => {
@@ -55,44 +76,86 @@ function renderTasks() {
 
         li.textContent = task.text;
 
-        if(task.id === selectedTaskId) {
+        // Selected task
+        if (task.id === selectedTaskId) {
             li.classList.add("selected");
         }
 
-        li.addEventListener("click",()=> {
+        // Completed task
+        if (task.completed) {
+            li.classList.add("completed");
+        }
+
+
+        // Select task
+        li.addEventListener("click", () => {
+
             selectedTaskId = task.id;
 
+            // Put task text inside input
+            input.value = task.text;
+
             renderTasks();
+
         });
+
+
+        // Double click = complete
+        li.addEventListener("dblclick", () => {
+
+            task.completed = !task.completed;
+
+            saveTask();
+
+            renderTasks();
+
+        });
+
 
         taskList.appendChild(li);
 
     });
-
 }
- 
 
 
-delbtn.addEventListener("click", ()=> 
-{
+// ==============================
+// DELETE TASK
+// ==============================
+
+delbtn.addEventListener("click", () => {
+
     if (selectedTaskId === null) {
         return;
     }
 
-    tasks = tasks.filter(task => task.id !== selectedTaskId);
+    tasks = tasks.filter((task) => {
+        return task.id !== selectedTaskId;
+    });
 
     selectedTaskId = null;
 
+    input.value = "";
+
     saveTask();
+
     renderTasks();
+
 });
 
-editbtn.addEventListener("click", ()=> {
+
+// ==============================
+// EDIT TASK
+// ==============================
+
+editbtn.addEventListener("click", () => {
+
     if (selectedTaskId === null) {
         return;
     }
 
-    const task = tasks.find(item => item.id === selectedTaskId);
+    const task = tasks.find((item) => {
+        return item.id === selectedTaskId;
+    });
 
     if (!task) {
         return;
@@ -105,11 +168,20 @@ editbtn.addEventListener("click", ()=> {
     }
 
     task.text = newText;
-    input.value = "";
+
     selectedTaskId = null;
 
+    input.value = "";
+
     saveTask();
+
     renderTasks();
+
 });
+
+
+// ==============================
+// INITIAL RENDER
+// ==============================
 
 renderTasks();
