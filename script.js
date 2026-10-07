@@ -4,6 +4,7 @@ const taskList = document.getElementById("taskList");
 const addbtn = document.querySelector(".addbtn");
 const delbtn = document.getElementById("delbtn");
 const editbtn = document.getElementById("editbtn");
+const emptyState = document.getElementById("emptyState");
 
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
@@ -69,6 +70,14 @@ input.addEventListener("keydown", (event) => {
 function renderTasks() {
 
     taskList.innerHTML = "";
+
+    if(tasks.lenth ===0) {
+        emptyState.style.display ="block";
+    }
+
+    else {
+        emptyState.style.display ="none";
+    }
 
     tasks.forEach((task) => {
 
